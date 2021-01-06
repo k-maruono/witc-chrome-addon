@@ -23,6 +23,9 @@ $("#set_time").on("click", () => {
 });
 
 function calc_time() {
+  var ret = document.forms;
+  console.log(ret);
+
 };
 
 function readCookie() {
@@ -38,3 +41,11 @@ function writeCookie(cookie) {
   console.log(document.cookie);
 
 };
+
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
+	console.log(message)
+	setTimeout(function(){
+		sendResponse({a:1,b:2})
+	}, 5000)
+	return true
+})
